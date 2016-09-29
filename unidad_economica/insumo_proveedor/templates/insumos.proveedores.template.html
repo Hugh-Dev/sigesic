@@ -1,0 +1,300 @@
+{% extends 'base.template.html' %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block content_header_title %}{% trans 'Registro' %}{% endblock %}
+{% block content_header_roadmap %}
+    <li><a href="{% url 'insumos_proveedores' %}">{% trans 'Insumos y Proveedores' %}</a></li>
+    <li class="active">{% block active_link %}{% trans 'Pag. actual' %}{% endblock %}</li>
+{% endblock %}
+{% block contenido %}
+    <div class="box box-primary box-registro-general" style="padding:20px">
+        <div class="box-header with-border">
+            <h1 class="box-title">{% trans 'Insumos'%}</h1>
+        </div>
+        <form action="{% url 'insumos_proveedores' %}" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+        {% csrf_token %}
+        <div class="box-body">
+            <div class="row">
+            <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group {% if form.subunidad.errors %}has-error{% endif %}">
+                        <label class="col-md-6 col-xs-6 col-sm-6 control-label" for="{{ form.subunidad.auto_id }}">
+                            {{ form.subunidad.label }}
+                        </label>
+                        <div class="col-md-6 col-xs-6 col-sm-6">
+                            <div class="form-inline">
+                                {{ form.subunidad }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.subunidad.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.subunidad.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-2"></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {% if form.nombre_insumo.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.nombre_insumo.auto_id }}">
+                            {{ form.nombre_insumo.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.nombre_insumo }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.nombre_insumo.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.nombre_insumo.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group {% if form.nombre_producto.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.nombre_producto.auto_id }}">
+                            {{ form.nombre_producto.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.nombre_producto }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.nombre_producto.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.nombre_producto.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {% if form.especificacion_tecnica.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.especificacion_tecnica.auto_id }}">
+                            {{ form.especificacion_tecnica.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.especificacion_tecnica }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.especificacion_tecnica.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.especificacion_tecnica.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group {% if form.marca.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.marca.auto_id }}">
+                            {{ form.marca.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.marca }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.marca.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.marca.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {% if form.insumo_proveedor.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.insumo_proveedor.auto_id }}">
+                            {{ form.insumo_proveedor.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.insumo_proveedor }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.insumo_proveedor.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.insumo_proveedor.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group {% if form.numero_proveedor.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.numero_proveedor.auto_id }}">
+                            {{ form.numero_proveedor.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.numero_proveedor }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.numero_proveedor.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.numero_proveedor.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-primary btn-sm">{% trans 'Guardar' %}</button>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    <form action="{% url 'insumos_proveedores' %}" role="form" class="form form-horizontal validate-form" method="post" autocomplete="off">
+    {% csrf_token %}
+        <div class="box-header with-border">
+            <h1 class="box-title">{% trans 'proveedores'%}</h1>
+        </div>
+        
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {% if form.pais_origen.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.pais_origen.auto_id }}">
+                            {{ form.pais_origen.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.pais_origen }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.pais_origen.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.pais_origen.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group {% if form.nombre_proveedor.errors %}has-error{% endif %}">
+                        <label class="col-md-3 col-xs-3 col-sm-3 control-label" for="{{ form.nombre_proveedor.auto_id }}">
+                            {{ form.nombre_proveedor.label }}
+                        </label>
+                        <div class="col-md-9 col-xs-9 col-sm-9">
+                            <div class="form-inline">
+                                {{ form.nombre_proveedor }}<i class="ion ion-ios-medical item-requerido"></i>
+                                {% if form.nombre_proveedor.errors %}
+                                    <p class="bg-warning">
+                                        <span class="help-block msg-error">
+                                            <i class="fa fa-times-circle-o"></i> {{ form.nombre_proveedor.errors.as_text|cut:'* ' }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+
+            </div>
+            
+            <div class="row">
+
+            </div>
+            <div class="row">
+
+            </div>
+            
+            <div class="row text-center">
+
+            </div><br>
+            
+            <div class="row">
+
+            </div>
+
+            <div class="row">
+
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12"><br>
+                    <span style="color: blue;">
+                        <b>{% trans 'Nota:' %}</b>
+                        {% trans 'Seleccione una de las opciones en unidad de medida, en caso de seleccionar' %}
+                        {% trans 'UNIDAD DE VENTA AL DETAL, tenga en cuenta que se refiere a la venta al detal.'%}<br>
+                        {% trans 'Ejemplo: 1 celular, 1 carro, 1 paquete de gas, etc.'%}
+                    </span>
+                </div>
+            </div><br>
+        </div>
+        <div class="box-footer">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary btn-sm">{% trans 'Guardar' %}</button>
+            </div>
+        </div>
+    </form>
+    </div>
+{% endblock%}
+{% block extra_footer %}
+    <script type="text/javascript">
+        $('#id_').change(function(){
+            var attr = $(this).val();
+            $.ajax({url:'/ajax/insumo-data',data:{'aplicacion':'','model':'','argument':attr,'value':''},type:'get',
+                success:function(data){
+                    data = JSON.parse(data)
+                    $('#').html('');
+                    $('#').append($('<option>', {value: '',text: 'Seleccione...'}));
+                    for(var i=1;i<=data.model;i++)
+                    {
+                        $('#').append($('<option>', {
+                            value: i,
+                            text: ' '+i
+                        }));
+                    }
+                },
+                error:function(error)
+                {
+                    console.log(error);
+                },
+            });
+        });
+        $('#').change(function(){
+            if($('# option:selected').text()=="Venezuela")
+            {
+                $('#id_rif_0').removeAttr('readonly');
+                $('#id_rif_1').removeAttr('readonly');
+                $('#id_rif_2').removeAttr('readonly');
+            }
+            else
+            {
+                $('#id_rif_0').attr('readonly',true);
+                $('#id_rif_1').attr('readonly',true);
+                $('#id_rif_2').attr('readonly',true);
+            }
+        });
+    </script>
+{% endblock %}

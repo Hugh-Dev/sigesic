@@ -12,6 +12,7 @@ Copyleft (@) 2016 CENDITEL nodo Mérida - https://sigesic.cenditel.gob.ve/trac/
 # @copyright <a href='​http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
 # @date 13-07-2016
 # @version 2.0
+
 from django.db import models
 from unidad_economica.sub_unidad_economica.models import SubUnidadEconomica
 from base.models import CaevClase, Pais
